@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeneBody Dataset</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="./static/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="./static/js/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1054.0" data-gr-ext-installed="">
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+            <div class="dataset-video">
+                <video autoplay muted loop style="opacity: 0.7;">
+                  <source src="static/videos/genebody_teaser.mp4" type="video/mp4">
+                </video>
+                <div class="overlay">
+                    <h1 class="title is-1 dataset-title">GeneBody Dataset</h1>
+                </div>
+            </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://hkustconnect-my.sharepoint.com/:f:/g/personal/wchengad_connect_ust_hk/EgWKPko5WXdClIg_zsjDSxwBH7LM4waKyJkWaslC-BVfSQ?e=JaDZdQ" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <svg class="svg-inline--fa fa-images fa-w-18" aria-hidden="true" focusable="false" data-prefix="far" data-icon="images" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z"></path></svg>
+                  </span>
+                  <span>Test Set (10 IDs)</span>
+                </a>
+                <a href="https://hkustconnect-my.sharepoint.com/:f:/g/personal/wchengad_connect_ust_hk/EsrcWGwZz0BEszo9jkMiJvoBHuad4esmrepOuG5dw3cQsw?e=5Qh7Ex" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <svg class="svg-inline--fa fa-images fa-w-18" aria-hidden="true" focusable="false" data-prefix="far" data-icon="images" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z"></path></svg>
+                </span>
+                <span>Train Set (40 IDs)</span>
+                </a>
+                <a href="https://github.com/google/nerfies/releases/tag/0.1" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <svg class="svg-inline--fa fa-images fa-w-18" aria-hidden="true" focusable="false" data-prefix="far" data-icon="images" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z"></path></svg>
+                    </span>
+                <span>GeneBody Full (370 IDs)</span>
+                </a>
+            </span>
+            </div> -->
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="navbar-brand">
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+              <div class="navbar-menu">
+                <div class="navbar-start" style="flex-grow: 1; justify-content: center; font-size: 20px !important; font-family: 'Google Sans', sans-serif;">
+                  <a class="navbar-item" href="./index.html">
+                  <span class="icon">
+                    <i class="fa fa-home"></i>
+                  </span>
+                  <span>Main Project</span>
+                  
+                </a>
+                </div>
+                <div class="navbar-start" style="flex-grow: 1; justify-content: center; font-size: 20px !important; font-family: 'Google Sans', sans-serif;">
+
+                  <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                      <span class="icon">
+                        <!-- <svg class="svg-inline--fa fa-download fa-w-18" aria-hidden="true" focusable="false" data-prefix="far" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z"></path></svg> -->
+                        <i class="fa fa-download"></i>
+                      </span>
+                      <span>Download Dataset</span>
+                    </a>
+                    <div class="navbar-dropdown">
+                      <a class="navbar-item" href="https://hkustconnect-my.sharepoint.com/:f:/g/personal/wchengad_connect_ust_hk/EgWKPko5WXdClIg_zsjDSxwBH7LM4waKyJkWaslC-BVfSQ?e=JaDZdQ">
+                        GeneBody-Test10
+                      <a class="navbar-item" href="https://hkustconnect-my.sharepoint.com/:f:/g/personal/wchengad_connect_ust_hk/EsrcWGwZz0BEszo9jkMiJvoBHuad4esmrepOuG5dw3cQsw?e=5Qh7Ex">
+                        GeneBody-Train40
+                      </a>
+                      <a class="navbar-item">
+                        GeneBody-Extended370
+                      </a>
+                    </div>
+                  </div>
+                </div>
+            
+              <div class="navbar-start" style="flex-grow: 1; justify-content: center; font-size: 20px !important; font-family: 'Google Sans', sans-serif;">
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">
+                    <span class="icon">
+                      <!-- <svg class="svg-inline--fa fa-download fa-w-18" aria-hidden="true" focusable="false" data-prefix="far" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z"></path></svg> -->
+                      <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+                    </span>
+                    <span>Benchmarks</span>
+                  </a>
+                  <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                      <span style='margin-right:0.5em; display:inline-block;'><i class="fa fa-paw"></i></span>
+                      <span> GNR</span>
+                    </a>
+                    <a class="navbar-item">
+                      <span style='margin-right:0.5em; display:inline-block;'><i class="fa fa-dove"></i></span>
+                      <span> pixelNeRF</span>
+                    </a>
+                    <a class="navbar-item">
+                      <span style='margin-right:0.5em; display:inline-block;'><i class="fa fa-dog"></i></span>
+                      <span> IBRNet</span>
+                    </a>
+                    <a class="navbar-item">
+                      <span style='margin-right:0.5em; display:inline-block;'><i class="fa fa-feather-alt"></i></span>
+                      <span> NeuralBody</span>
+                    </a>
+                    <a class="navbar-item">
+                      <span style='margin-right:0.5em; display:inline-block;'><i class="fa fa-spider"></i></span>
+                      <span> NeuralTexture</span>
+                    </a>
+                    <a class="navbar-item">
+                      <span style='margin-right:0.5em; display:inline-block;'><i class="fa fa-cat"></i></span>
+                      <span> NeuralVolumes</span>
+                    </a>
+                    <a class="navbar-item">
+                      <span style='margin-right:0.5em; display:inline-block;'><i class="fa fa-fish"></i></span>
+                      <span> NHR</span>
+                    </a>
+                    <a class="navbar-item">
+                      <span style='margin-right:0.5em; display:inline-block;'><i class="fa fa-horse-head"></i></span>
+                      <span> A-NeRF</span>
+                    </a>  
+                    <a class="navbar-item">
+                      <span style='margin-right:0.5em; display:inline-block;'><i class="fa fa-crow"></i></span>
+                      <span>NeuralHumanPerformer</span>
+                    </a>  
+                  </div>
+                </div>
+              </div>
+          
+            </div>
+            </nav>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-2">Test Set</h2>
+    </div>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="static/videos/fuzhizhi_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop height="100%">
+            <source src="static/videos/zhuna_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop height="100%">
+            <source src="static/videos/natacha_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop height="100%">
+            <source src="static/videos/joseph_matanda_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop height="100%">
+            <source src="static/videos/barry_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop height="100%">
+            <source src="static/videos/maria_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop height="100%">
+            <source src="static/videos/amanda_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop height="100%">
+            <source src="static/videos/soufianou_boubacar_moumouni_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop height="100%">
+            <source src="static/videos/mahaoran_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop height="100%">
+            <source src="static/videos/jinyutong_25_batch.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-2">Training Set</h2>
+      </div>
+
+    <div class="tabs is-toggle is-fullwidth" id="tabs" style="font-size: 17px !important; font-family: 'Google Sans', sans-serif;">
+      <ul>
+        <li class="is-active" data-tab="0">
+          <a>
+            <span>All</span>
+          </a>
+        </li>
+        <li data-tab="1">
+          <a>
+            <span>Normal</span>
+          </a>
+        </li>
+        <li data-tab="2">
+          <a>
+            <span>Hard Clothing</span>
+          </a>
+        </li>
+        <li data-tab="3">
+          <a>
+            <span>Hard Pose</span>
+          </a>
+        </li>
+        <li data-tab="4">
+          <a>
+            <span>Accessories</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+      <div id="1-carousel" class="carousel tab-carousel">
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhengxin_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/lihongyun_25_batch.mp4" type="video/mp4"></video></div> -->
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/ahha_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/camilo_25_batch.mp4" type="video/mp4"></video></div>
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/aosilan_25_batch.mp4" type="video/mp4"></video></div> -->
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/amaris_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/barlas_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/arslan_25_batch.mp4" type="video/mp4"></video></div>
+
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/quyuanning_25_batch.mp4" type="video/mp4"></video></div> -->
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhanghongwei_25_batch.mp4" type="video/mp4"></video></div>
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/dilshod_25_batch.mp4" type="video/mp4"></video></div> -->
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/abror_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/rivera_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/kamal_ejaz_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/alejandro_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhuxuezhi_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/gaoxing_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/shchyerbina_oleksandr_25_batch.mp4" type="video/mp4"></video></div>
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/huajiangtao3_25_batch.mp4" type="video/mp4"></video></div> -->
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhangzixiao_25_batch.mp4" type="video/mp4"></video></div>
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/fenghaohan_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhonglantai_25_batch.mp4" type="video/mp4"></video></div> -->
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhanghao_25_batch.mp4" type="video/mp4"></video></div>
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/xujiarui_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/wangxiang_25_batch.mp4" type="video/mp4"></video></div> -->
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/Tichinah_jervier_25_batch.mp4" type="video/mp4"></video></div>
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/ivan_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/sunyuxing_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhuna2_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/jinyutong2_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/kemal_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/jinyutong_25_batch.mp4" type="video/mp4"></video></div> -->
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/anastasia_25_batch.mp4" type="video/mp4"></video></div>
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/songyujie_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/wuwenyan_25_batch.mp4" type="video/mp4"></video></div> -->
+        <!-- <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/fuzhizhi2_25_batch.mp4" type="video/mp4"></video></div> -->
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/huajiangtao5_25_batch.mp4" type="video/mp4"></video></div>
+      </div>
+
+      <!-- Clothing -->
+      <div id="2-carousel" class="carousel tab-carousel">
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/huajiangtao3_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/jinyutong2_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/fuzhizhi2_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/dannier_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/kemal_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/aosilan_25_batch.mp4" type="video/mp4"></video></div>
+      </div>
+
+      <!-- Pose -->
+      <div id="3-carousel" class="carousel tab-carousel">
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/xujiarui_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/ivan_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhuna2_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/dilshod_25_batch.mp4" type="video/mp4"></video></div>
+        <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/songyujie_25_batch.mp4" type="video/mp4"></video></div>
+
+      </div>
+
+    <!-- Accessories -->
+    <div id="4-carousel" class="carousel tab-carousel">
+      <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/fenghaohan_25_batch.mp4" type="video/mp4"></video></div>
+      <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/wuwenyan_25_batch.mp4" type="video/mp4"></video></div>
+      <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/wangxiang_25_batch.mp4" type="video/mp4"></video></div>
+      <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/lihongyun_25_batch.mp4" type="video/mp4"></video></div>
+      <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhengxin_25_batch.mp4" type="video/mp4"></video></div>
+      <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/quyuanning_25_batch.mp4" type="video/mp4"></video></div>
+      <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/zhonglantai_25_batch.mp4" type="video/mp4"></video></div>
+      <div class="item item-steve"><video poster="" id="steve" autoplay controls muted loop height="100%"><source src="static/videos/sunyuxing_25_batch.mp4" type="video/mp4"></video></div>
+
+    </div>
+  </div>    
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+
+
+
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<!-- <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+        <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" disabled="">
+        <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{
+    author = {Wei, Cheng and Su, Xu and Jingtan, Piao and Wayane, Wu and Chen, Qian and Kwan-Yee, Lin and Hongsheng, Li},
+    title = {Generalizable Neural Performer: Learning Robust Radiance Fields for Human Novel View Synthesis},
+    publisher = {arXiv},
+    year = {2022},
+  }</code></pre>
+  </div>
+</section>
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
