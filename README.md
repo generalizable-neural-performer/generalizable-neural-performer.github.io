@@ -2,9 +2,9 @@
 
 This is the repository that contains source code for the [GHR website](https://generalizable-neural-performer.github.io), and it is derived from [Nerfies website](https://nerfies.github.io)
 
-If you find Nerfies useful for your work please cite:
+If you find this repo useful for your work please cite:
 ```
-@inproceedings{
+@article{
     author = {Wei, Cheng and Su, Xu and Jingtan, Piao and Wayane, Wu and Chen, Qian and Kwan-Yee, Lin and Hongsheng, Li},
     title = {Generalizable Neural Performer: Learning Robust Radiance Fields for Human Novel View Synthesis},
     publisher = {arXiv},
