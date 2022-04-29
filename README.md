@@ -1,6 +1,6 @@
 # Generalizable Neural Performer
 
-This is the repository that contains source code for the [GHR website](https://generalizable-neural-performer.github.io), and it is derived from [Nerfies website](https://nerfies.github.io)
+This is the repository that contains source code for the [GNR website](https://generalizable-neural-performer.github.io), and it is derived from [Nerfies website](https://nerfies.github.io)
 
 If you find this repo useful for your work please cite:
 ```
